@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Пример использования селекторов со вложенными тегами</title>
+	<!-- старый стиль написания, но для примера пойдёт -->
+	<style type="text/css">
+		h1 {color: blue;}
+
+		/* Здесь ищется тег b внутри тега p. Если будет прописан ещё один тег, помимо b, то не сработает, т.е. явно "наследование" не показано */
+		p b {color: red;}
+
+		/* Сначала пишем родительский тег p потом тот тег, который вложен в родительский, т.е. b
+		Это делается чтобы "замечать" другие теги внутри родительского, как например во 2 строчке
+		Т.е. к 2 строчке данный селектор применен не будет, а к 1 будет */
+		p > b {font-size: 24px;}
+
+		/* Также все селекторы применяются одновременно. Нет взаимозаменяющих */
+
+		P > span > b {color: blue;} /* или можно записать так: div > p + span {color: blue} */
+
+		/* Есть понятие "сестринских" классов. Например, для тегов p родительским является body, тогда друг другу теги p - сестры */
+		/* Если нужно выделить первый абзац следующий после заголовка h1, то нужно применить: 
+		Здесь важно то, что вложенность должна быть одна и та же*/
+		h1 + p {padding: 10px; background: yellow;}
+
+		.main_menu {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			background: #EDEEF0;
+			color: #285473;
+			width: 150px;
+		}
+
+		.menu_item {
+			padding: 2px;
+			margin: 10px 0 0 0;
+		}
+
+		/* расширение класса menu_item
+		ОБЯЗАТЕЛЬНО, между расширением и именем класса ПРОБЕЛОВ БЫТЬ НЕ ДОЛЖНО, иначе будет перечисление классов по типу
+		.menu_item .selected, т.е. 2 класса */
+		.menu_item.selected {
+			background: #C7D5EB;
+		}
+
+		/* text-decoration - не подчёркивает ссылку
+		далее идут псевдоклассы (через двоеточкие)
+		link - ссылка (непосещенная ссылка)
+		visited - посещенная ссылка
+		active - активная ссылка
+		hover - активна, когда наводим курсор мыши на ссылку */
+		a {text-decoration: none;}
+		a:link {color: green;}
+		a:visited {color: red;}
+		a:active {color: black;}
+		a:hover {text-decoration: underline;}
+
+		/* когда активна ссылка (наводим курсор мыши на элемент списка) она окрашивается в жёлтый цвет
+		когда нажимаем на элемент его фон становится серым */
+
+		div active {background: gray;}
+		ul > li:hover {background: yellow;}
+
+		/* пример работы псевдо-класса first-child
+		div p:first-child {text-transform: uppercase;}
+		*/
+
+		/* также есть псевдо-классы first-letter, first-line, before, after */
+
+	</style>
+</head>
+<body>
+	<h1>Обратная связь</h1>
+
+		<p>Пример текста с <b>вложенным</b> тегом b</p>
+		<p>Пример 2 текста с <span><b>вложеннным</b></span> тегом b</p>
+
+	<div>
+	<ul class='main_menu'>
+		<li class='menu_item'>Моя страница</li>
+		<li class='menu_item selected'>Новости</li>
+		<li class='menu_item'>Сообщения</li>
+		<li class='menu_item'>Друзья</li>
+		<li class='menu_item'>Группы</li>
+		<li class='menu_item'>Фотографии</li>
+	</ul>
+	</div>
+
+	<p><a href="https://e.mail.ru/inbox">Почта</a></p>
+
+</body>
+</html>

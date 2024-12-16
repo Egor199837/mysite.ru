@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, text/html">
+	<title>Сайт 5 урока</title>
+</head>
+<body>
+
+	<h1>Обратная связь</h1>
+
+	<!-- <form>Формы нужны для реализации взаимодействия с сервером</form>
+	атрибут action содержит url скрипт, который будет обрабатывать запрос данной формы
+	method говорит о том, как данные формы будут передаваться на сервер, либо через POST-запрос, либо через GET-запрос -->
+	<!-- GET-запросы всегда прописываются в браузере с помощью параметров после использования скрипта, послк которого пишется "?" и параметры через &-->
+	<form action="contact.php" method="post">
+		<p><input type="text" name="fio" value=""></p>
+		<p><textarea name="message" rows=10 cols=40></textarea></p>
+		<p><input type="submit" value="Отправить"></p>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Сайт шестого урока (регистрация пользователя)</title>
+	<!-- Здесь используется оформление через CSS -->
+	<link rel="stylesheet" type="text/css" href="css/CSS (begin).css">
+	<!-- CSS можно использовать внутри HTML документа в виде <style></style>, но такие способы не рекомендуется делать, т.к. принято разделять оформление и "начинку"-->
+</head>
+<body>
+	<!-- С помощью тега <input type="" name=""> можно осздавать такие элементы управления в форме
+	Название элемента | Тип (type)
+	Поле ввода | text
+	Кнопка | button
+	Флажки | checkbox
+	Переключатели | radio
+	Поле ввода пароля | password
+	Скрытое поле | hidden
+	Сброс данных формы | reset
+	Отправка данных серверу | submit-->
+
+	<!-- Примеры использования данных тегов
+	<input type="text" name="Имя поле (уникальное)" value="Начальное значение" size=10>
+	<input type="checkbox checked> Флажок-->
+
+	<!-- <select>Этот тег позволяет выбрать значение из выпадающего списка</select> -->
+	<!-- <select name="Имя элемента при отправке соответствующих данных серверу (аналогично атрибуту name тега "input") 
+		size="число отображаемых строк списка (если size>1), то список становится не выпадающим)" 
+		multiple="позволяет выбирать сразу несколько элементов в списке"></select> -->
+
+	<!-- <textarea>Данный тег позволяет писать большие данные</textarea> -->
+	<!-- <textarea cols="ширина поля в символах"
+		rows="высота поля в символах"
+		name="имя поля (действие аналогично такому же параметру в <input>"
+		maxlength="максимальное число вводимых символов (не поддерживается некоторыми браузерами"></textarea> -->
+
+<!-- Первый способ задания поля регистрации (менее популярный, т.к. используется <table></table>) -->		
+
+	<!--	<div id='reg_form'>
+		<h1>Форма регистрации</h1>
+
+		<form action=register.php method="post">
+			<input type="hidden" name="id" value="123456">
+
+			<table border="0">
+				<tr>
+					<td>Имя: </td>
+					<td><input type="text" name="fio" value=""></td>
+				</tr>
+				<tr>
+					<td>Пол: </td>
+					<td><input type="radio" name="sex" value="1" checked> M <input type="radio" name="sex" value="2"> Ж</td>
+				</tr>
+				<tr>
+					<td>Пароль: </td>
+					<td><input type="password" name="pass" value=""></td>
+				</tr>
+				<tr>
+					<td>Город: </td>
+					<td><select name='city'>
+						<option value="1">Москва</option>
+						<option value="2">Санкт-Петербург</option>
+						<option value="3">Казань</option>
+						<option value="4">Уфа</option>
+						<option value="5">Самара</option>
+						<option value="6">Томск</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Напишите о себе:</td>
+					<td><textarea rows=10, cols=35>Введите данные о себе...</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p><input type="checkbox" name="agree"> Регистрируясь, вы принимаете пользовательское соглашение</p></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Зарегистрироваться"></td>
+					<td><input type="reset" value="Очистить форму"></td>
+				</tr>
+			</table>
+
+		</form>
+	</div> -->
+
+<!-- Второй способ задания поля регистрации (предпочтительный, засчёт использования блоков <div></div> и прикручивания туда css) -->
+<!-- использования аргументов тега <div></div> class и id различно только в том, что такое название id='name' может быть использовано только ОДИН раз
+когда имя class='name' может быть использовано МНОГО раз -->
+
+	<div id='reg_form'>
+		<h1>Форма регистрации</h1>
+
+		<form action=register.php method="post">
+			<input type="hidden" class='reg_input' name="id" value="123456">
+
+			<ul class='reg_list'>
+				<li>
+					<div class='reg_title'>Имя:</div>
+					<input type="text" class='reg_input' name="fio" value="" class='red_input'>
+				</li>
+
+				<li>
+					<div class='reg_title'>Пол:</div>
+					<input type="radio" name="sex" value="1" checked> М
+					<input type="radio" name="sex" value="2" checked> Ж
+				</li>
+
+				<li>
+					<div class='reg_title'>Город:</div>
+					<select class='reg_select' name='city'>
+						<option value="1">Москва</option>
+						<option value="2">Санкт-Петербург</option>
+						<option value="3">Казань</option>
+						<option value="4">Уфа</option>
+						<option value="5">Самара</option>
+						<option value="6">Томск</option>
+					</select>
+				</li>
+
+				<li>
+					<div class='reg_title'>Пароль:</div>
+					<input type="password" class='reg_input' name="pass" value="">
+				</li>
+
+				<li>
+					<textarea name='descr' rows=5 cols=40 placeholder="Напишите что-то о себе"></textarea>
+				</li>
+
+				<li>
+					<input type="checkbox" name="agree">
+					<span class='reg_agree'>Регистрируясь, вы принимаете пользовательское соглашение</span>
+				</li>
+			</ul>
+
+			<div id='reg_control'>
+				<div style="float: left"><input class="reg_button" type="submit" value="Зарегистрироваться"></div>
+				<div style="float: right"><input class="reg_button" type="reset" value="Очистить форму"></div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>
